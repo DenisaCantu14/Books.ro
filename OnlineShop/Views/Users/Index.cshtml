@@ -1,0 +1,25 @@
+﻿<!--<ol class="breadcrumb">
+    <li><h3>@ViewBag.Title</h3></li>
+</ol>
+ -->
+@Styles.Render("~/Content/User.css")
+<h3 class="Title">Users</h3>
+<br />
+<div class="bigbox">
+    <ul class="list-group box">
+        @foreach (var user in ViewBag.UsersList)
+        {
+            <li class="list-group-item l ">
+                <h3>@user.UserName</h3>
+                <a class="btn btn-sm btn-success show" href="/Users/Show/@user.Id"> Show</a>
+            </li>
+        }
+    </ul>
+</div>
+
+
+<!--<div class="panel-footer">
+    <a class="btn btn-sm btn-success" href="/Users/Edit/"> Edit user</a>
+    <a class="btn btn-sm btn-success" href="/Users/Show/"> Show user</a>
+</div>
+    -->

@@ -1,0 +1,74 @@
+﻿@Styles.Render("~/Content/Form.css")
+@model OnlineShop.Models.Book
+<br />
+<br />
+<a href="/Books/SaveImages" class="glyphicon glyphicon-chevron-left back">Back</a>
+<div class="small-box">
+
+    <h3 class="Title">Add a book</h3>
+    <div class="second-box">
+        @using (Html.BeginForm(actionName: "New", controllerName: "Books"))
+        {
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            @Html.Label("Title", "Title", new { @class = "name" })
+            <br />
+            @Html.TextBox("Title", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+            <br />
+
+
+            @Html.Label("ImageName", "Image name", new { @class = "name" })
+            <br />
+            @Html.TextBox("ImageName", null, new { @class = "form-control type" }) <br />
+            @Html.ValidationMessage("ImageName", "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("Description", "Description", new { @class = "name" })
+            <br />
+            @Html.TextArea("Description", null, new { @class = "form-control type text" }) <br />
+            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("Author", "Author", new { @class = "name" })
+            <br />
+            @Html.TextBox("Author", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("Publisher", "Publisher", new { @class = "name" })
+            <br />
+            @Html.TextBox("Publisher", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.Publisher, "", new { @class = "text-danger" })
+            <br />
+
+
+            @Html.Label("Price", "Price", new { @class = "name" })
+            <br />
+            @Html.TextBox("Price", null, new { @type = "number", step = "0.01", @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+
+            <br /><br />
+
+            <label class="name">Select category</label>
+            @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categ, "Value", "Text"),
+                    "Select category", new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+            <br />
+
+
+            if (ViewBag.role == true)
+            {<button class="btn btn-primary add" type="submit">Add book</button>}
+            else
+            { <button class="btn btn-primary add" type="submit">Send request</button>}
+
+
+        }
+    </div>
+
+</div>

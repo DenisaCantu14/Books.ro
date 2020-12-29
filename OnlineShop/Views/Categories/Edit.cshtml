@@ -1,0 +1,20 @@
+﻿@Styles.Render("~/Content/Form.css")
+<br />
+<br />
+<a href="/Categories/Index" class="glyphicon glyphicon-chevron-left back">Back</a>
+<div class="small-box">
+    <h3 class="Title">Edit category</h3>
+    <div class="second-box">
+        @using (Html.BeginForm(actionName: "Edit", controllerName: "Categories"))
+        {
+            @Html.HttpMethodOverride(HttpVerbs.Put)
+            @Html.Label("CategoryName", "Edit name: ", new { @class = "name" })
+            <br />
+            @Html.Editor("CategoryName", new { htmlAttributes = new { @class = "form-control type" } })
+            <br />
+            <br />
+
+            <button class="btn btn-success add" type="submit">Modify</button>
+        }
+        </div>
+    </div>

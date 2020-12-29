@@ -1,0 +1,16 @@
+﻿@Styles.Render("~/Content/Form.css")
+<br />
+<br />
+<div class="small-box">
+    <h3 class="Title"> Add a new category</h3>
+    <div class="second-box">
+    @using (Html.BeginForm(actionName: "New", controllerName: "Categories"))
+    {@Html.Label("Category Name", "Enter category's name: ", new { @class = "name" })
+    <br />
+    @Html.TextBox("CategoryName", null, new { @class = "form-control type" })
+    <br />
+    <br />
+    <button type="submit" class="btn btn-primary add">Add category</button>
+}
+    </div>
+</div>

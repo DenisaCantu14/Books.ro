@@ -1,0 +1,139 @@
+﻿
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.navbar {
+    background-color: #00345b;
+    border: none;
+    box-shadow: 0 6px 12px #dadada;
+    padding-bottom:10px;
+
+  
+}
+
+ .navbar a {
+        color: white !important;
+    }
+
+    .navbar a:hover {
+        color: #cad7ed !important;
+    }
+
+
+.font-logo {
+    font-family: Curlz;
+    font-size: 45px;
+}
+
+.space {
+    width: 100%;
+    height:100px;
+}
+
+.footer-position {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    padding-top: 10px;
+    color:black;
+    box-shadow: 0 6px 18px #ccc;
+}
+
+
+
+
+.full-width {
+    width: 100%;
+}
+
+
+.jumbotron {
+    margin-top: 20px;
+    background-image: url("../bk.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: right;
+    position: relative;
+    height: 480px;
+    width: 1100px;
+}
+
+.bk {
+    z-index: 3;
+    width: 500px;
+    padding-bottom: 0;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+}
+.shop {
+    position: absolute;
+    background-color: #00345b !important;
+    left: 40px;
+    bottom: 40px;
+}
+    .shop:hover {
+        background-color: #052033 !important;
+    }
+@font-face {
+    font-family: Curlz;
+    src: url(../Curlz.ttf);
+}
+
+.Input {
+    border: none;
+    background: transparent;
+    width: 120px;
+    color: white;
+    border: none;
+    border-bottom: solid #052033;
+    outline: none;
+    padding-top:6px;
+    padding-left:25px;
+
+}
+.search {
+    border: none;
+    background: transparent;
+    color: white;
+    padding-top: 15px;
+}
+
+.Input::-webkit-input-placeholder
+{
+color: white;
+opacity: 0.5;
+}
+
+.cart {
+    border: none;
+    background: transparent;
+    color: white;
+    padding-top: 15px;
+}

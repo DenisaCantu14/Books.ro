@@ -1,0 +1,41 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Langar&family=Lato:ital@1&display=swap');
+.l {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-bottom: 6px solid #00345b;
+    margin: auto;
+    background: transparent;
+    font-size: 17px;
+    color: #0971a4;
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+
+}
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.icon{
+    margin:20px;
+    width:60px;
+    
+}
+.box {
+    width: 73%;
+    border: 13px solid #00345b;
+    margin: auto;
+    box-shadow: 20px 20px 50px grey;
+    background-color: #cedceb;
+    border-radius: 2%;
+}
+
+.Title {
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+    color: #00345b;
+    font-size: 50px;
+    text-align:center;
+    padding:10px;
+}

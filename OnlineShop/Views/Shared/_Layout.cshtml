@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Books.ro</title>
+    <link rel="icon" href="../cat.png" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+
+
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Books.ro", "Index", "Home", new { area = "" }, new { @class = "navbar-brand font-logo" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Books", "Index", "Books")</li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
+                        <li>@Html.ActionLink("Add category", "New", "Categories")</li>
+                        <li>@Html.ActionLink("Accept", "Accept", "Books")</li>
+                        <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                    }
+
+                    @if (User.IsInRole("Editor") || User.IsInRole("Admin"))
+                    {
+
+                        <li>@Html.ActionLink("Add book", "SaveImages", "Books")</li>
+                    }
+                    <li>
+                        <div>
+                            <form method="GET" action="/Books/Index/">
+                                <input type="text" placeholder="Search.." value="@ViewBag.SearchString" name="search" class="Input">
+                                <button class="glyphicon glyphicon-search search" type="submit"></button>
+                            </form>
+                        </div>
+
+                    </li>
+                    @if (User.IsInRole("Editor") || User.IsInRole("Admin") || User.IsInRole("User"))
+                    { <li>
+                            <a class="glyphicon glyphicon-shopping-cart" aria-hidden="true" href="#"> </a>
+                        </li>
+                        }
+
+
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <div class="space"></div>
+        <hr />
+        <footer class="footer-position">
+            <p>&copy; @DateTime.Now.Year - <span class="font-logo">Books.ro</span></p>
+        </footer>
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

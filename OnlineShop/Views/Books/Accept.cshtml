@@ -1,0 +1,37 @@
+﻿@Styles.Render("~/Content/Index.css")
+@{var isNull = true; }
+<div class="wrapper accept">
+@foreach (var book in ViewBag.Books)
+{
+    
+        isNull = false;
+        <div class="panel panel-default ">
+            <div class="bookInfo">
+                <div class="panel-body ">
+                    <a href="/Books/Show/@book.BookId"> <img class="card-img-top imgBook" src="/Content/UploadedImages/@book.ImageName" alt="Card image cap" width="240" height="300"></a>
+                    <h2>@book.Title</h2>
+                    <p> by <strong>@book.Author</strong></p>
+                    <strong class="price">@book.Price RON</strong>
+                </div>
+                <div class="buttons">
+                    <form method="post" action="/Books/Accept/@book.BookId">
+                        @Html.HttpMethodOverride(HttpVerbs.Put)
+                        <button type="submit" class="btn btn-primary pull-left b">Accept book</button>
+                    </form>
+                    <form method="post" action="/Books/Delete/@book.BookId">
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button type="submit" class="btn btn-danger pull-right red">Delete book</button>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <a class=" btn btn-sm btn btn-success show" href="/Books/Show/@book.BookId/">Show book</a>
+                </div>
+            </div>
+        </div>
+    
+}
+</div>
+@if (isNull == true)
+{<div class="request">
+    <h2 class="title">There's no new request!</h2>
+</div>}

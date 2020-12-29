@@ -1,0 +1,70 @@
+﻿@Styles.Render("~/Content/Index.css")
+<h1 class="Title">@ViewBag.Message</h1>
+<div class="wrapper">
+    @foreach (var book in ViewBag.Books)
+    {
+      
+        <div class="panel panel-default ">
+                <div class="bookInfo">
+                    <div class="panel-body ">
+                        <a href="/Books/Show/@book.BookId"> <img class="card-img-top imgBook" src="/Content/UploadedImages/@book.ImageName" alt="Card image cap" width="240" height="300"></a>
+                        <h3 class="book-title">@book.Title</h3>
+                        <p> by <strong>@book.Author</strong></p>
+                        <strong class="price">@book.Price RON</strong>
+                    </div>
+                    <div class="panel-footer">
+                        <a class=" btn btn-sm btn btn-success show" href="/Books/Show/@book.BookId/">Show book</a>
+                    </div>
+
+                    <br />
+                </div>
+            </div>
+
+        
+    }
+</div>
+<br />
+
+<div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                @if (ViewBag.search != "")
+                {<a href="/Books/Index?page=1&search=@ViewBag.SearchString" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                }
+                else
+                {
+                    <a href="/Books/Index?page=1" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                }
+            </li>
+            @for (int i = 1; i <= ViewBag.lastPage; i++)
+            {
+                if (ViewBag.search != "")
+                {
+                    <li><a href="/Books/Index?page=@i&search=@ViewBag.SearchString">@(i)</a></li>
+                }
+                else
+                {
+                    <li><a href="/Books/Index?page=@i">@(i)</a></li>
+                }
+            }
+            <li>
+                @if (ViewBag.search != "")
+                {
+                    <a href="/Books/Index?page=@(ViewBag.lastPage)&search=@ViewBag.SearchString" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                }
+                else
+                { <a href="/Books/Index?page=@(ViewBag.lastPage)" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                }
+            </li>
+        </ul>
+    </nav>
+</div>

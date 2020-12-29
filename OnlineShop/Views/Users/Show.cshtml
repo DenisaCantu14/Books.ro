@@ -1,0 +1,46 @@
+﻿@model OnlineShop.Models.ApplicationUser
+@Styles.Render("~/Content/User.css")
+<br />
+
+<a href="/Users/Index"  class="glyphicon glyphicon-chevron-left back">Back</a>
+   
+<h3 class="Title">Info</h3>
+<br />
+<div class="box">
+
+    <div class="small-box">
+        <p class="name">User's name: @Model.UserName</p>
+        <div class="pair">
+            <i style=" display:inline-block" class="glyphicon glyphicon-envelope"></i>
+            <p style=" display:inline-block" class="name"> User's email: <span class="label label-default mail">@Model.Email</span></p>
+        </div>
+
+
+        @if (@Model.PhoneNumber != null)
+        {<div class="pair">
+                <i style=" display:inline-block" class="glyphicon glyphicon-phone"></i>
+                <p style=" display:inline-block" class="name">User's Phone : <span class="label label-default">@Model.PhoneNumber</span></p>
+            </div>
+        }
+
+        <p class="name"> User's role: @ViewBag.roleName</p>
+        <div class="pair">
+            @if ((string)Model.Id != ViewBag.utilizatorCurent)
+            {
+                <a style=" display:inline-block" class="btn btn-sm btn-success edit" href="/Users/Edit/@Model.Id"> Edit</a>
+                <div style=" display:inline-block" class="trash">
+                    @using (Html.BeginForm(actionName: "Delete", controllerName: "Users", routeValues: new { id = @Model.Id }))
+                    {
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button style=" display:inline-block" class="btn btn-success delete" type="submit">Delete</button>
+
+                    }
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+</div>
+

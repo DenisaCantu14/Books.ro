@@ -1,0 +1,26 @@
+﻿@Styles.Render("~/Content/CategoryIndex.css")
+<h3 class="Title">Categories</h3>
+<br />
+<div class="bigbox">
+    <ul class="list-group box ">
+        @foreach (var category in ViewBag.Categories)
+        {
+            <li class="list-group-item l ">
+                <h3>@category.CategoryName</h3>
+
+                <div class="buttons" >
+                    <a style="text-decoration: none; color:inherit" class="glyphicon glyphicon-pencil icon" href="/Categories/Edit/@category.CategoryId"></a>
+
+                    <form method="post"  action="/Categories/Delete/@category.CategoryId">
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button type="submit" class="glyphicon glyphicon-trash icon" style="  border: none; background: transparent"></button>
+                    </form>
+                </div>
+
+            </li>
+
+
+        }
+    </ul>
+</div>
+

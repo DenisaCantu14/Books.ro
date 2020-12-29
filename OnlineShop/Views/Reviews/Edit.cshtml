@@ -1,0 +1,21 @@
+﻿@model OnlineShop.Models.Review
+@Styles.Render("~/Content/Form.css")
+<br />
+<a href="/Books/Show/@Model.BookId" class="glyphicon glyphicon-chevron-left back">Back</a>
+
+<div class="small-box">
+    <h3 class="Title">Edit category</h3>
+    <div class="second-box">
+        <form method="post" action="/Reviews/Edit/@Model.ReviewId">
+            @Html.HttpMethodOverride(HttpVerbs.Put)
+            <label class="name">Rating</label>
+            <input class = "form-control type" type="number" name="NrStars" value="@Model.NrStars" />
+            <br />
+            <label  class="name">Review content</label>
+            <br />
+            <textarea class = "form-control type text1" name="Content">@Model.Content</textarea>
+            <br />
+            <button class="btn btn-success add" type="submit">Edit review</button>
+        </form>
+    </div>
+</div>

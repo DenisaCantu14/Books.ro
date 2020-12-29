@@ -1,0 +1,74 @@
+﻿
+@import url('https://fonts.googleapis.com/css2?family=Langar&family=Lato:ital@1&display=swap');
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 50px;
+    text-align: center;
+}
+.accept {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.show, .b{
+    background-color: #00345b !important;
+    border-color: #00345b !important;
+}
+.imgBook
+{
+    width:150px;
+    height:200px;
+  
+}
+.shop:hover, .show:hover, .b:hover {
+    background-color: #052033 !important;
+}
+
+
+
+.price {
+    color: #0971a4;
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+}
+.red {
+    background-color: #6b2222 !important;
+    border-color: #6b2222 !important;
+}
+    .red:hover {
+        background-color: #541b1b !important;
+    }
+
+.buttons {
+    display: inline-flex;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+.b, .red {
+    margin: 6px;
+}
+
+.title {
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+    color: #00345b;
+    font-size: 60px;
+}
+.request {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.book-title{
+    height:80px;
+    overflow:hidden;
+}
+.Title {
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+    color: #00345b;
+    
+}

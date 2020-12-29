@@ -1,0 +1,14 @@
+﻿@Styles.Render("~/Content/Form.css")
+<div class="small-box">
+    @using (Html.BeginForm("SaveImages", "Books", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <h3 class="Title"> Upload the image for the new book</h3>
+        <br /><br />
+        <input style ="margin-left:70px;"type="file" name="file" value="Browse" />
+        <br />
+      
+
+        <input class="btn btn-success add" type="submit" value="Upload" />
+
+    }
+</div>

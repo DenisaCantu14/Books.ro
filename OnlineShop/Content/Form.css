@@ -1,0 +1,65 @@
+﻿.Title {
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+    color: #00345b;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.name {
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+}
+
+.small-box {
+    width: 73%;
+    border: 9px solid #00345b;
+    margin: auto;
+    box-shadow: 20px 20px 50px grey;
+    background-color: #cedceb;
+    border-radius: 2%;
+    padding: 20px;
+    margin-top:20px;
+ 
+}
+.second-box{
+    margin-top:60px;
+    display:flex;
+    justify-content:center;
+}
+.add {
+    background-color: #00345b !important;
+    border-color: #00345b !important;
+    outline: 0 !important;
+    width: 140px;
+    height: 40px;
+    font-size: 19px;
+    margin-left:70px;
+}
+
+ .add:hover {
+        background-color: #052033 !important;
+    }
+
+.type {
+    padding-top: 10px;
+    width: 330px;
+    height: 40px;
+    font-size: 19px;
+}
+.text {
+    min-height: 150px;
+    resize: vertical;
+}
+.text1 {
+    min-height: 400px !important;
+    min-width: 500px !important;
+    resize: vertical;
+}
+.back {
+    text-decoration: none !important;
+    font-size: 20px;
+    color: #00345b;
+}

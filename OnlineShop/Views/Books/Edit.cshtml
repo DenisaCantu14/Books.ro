@@ -1,0 +1,60 @@
+﻿@model OnlineShop.Models.Book
+@Styles.Render("~/Content/Form.css")
+<br />
+<a href="/Books/Show/@Model.BookId" class="glyphicon glyphicon-chevron-left back">Back</a>
+
+<div class="small-box">
+    <h3 class="Title">Edit category</h3>
+    <div class="second-box">
+        @using (Html.BeginForm(actionName: "Edit", controllerName: "Books"))
+        {
+            @Html.HttpMethodOverride(HttpVerbs.Put)
+            <br />
+
+            @Html.HiddenFor(m => m.BookId)
+
+            @Html.Label("Title", "Title", new { @class = "name" })
+            <br />
+
+            @Html.Editor("Title", new { htmlAttributes = new { @class = "form-control type" } })
+
+            <br />
+            <br />
+            @Html.Label("ImageName", "Image Name", new { @class = "name" })
+            <br />
+            @Html.Editor("ImageName", Model.ImageName, new { htmlAttributes = new { @class = "form-control type" } })
+            @Html.ValidationMessage("ImageName", "", new { @class = "text-danger" })
+            <br />
+            <br />
+
+
+            @Html.Label("Description", "Description", new { @class = "name" })
+            <br />
+            @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control type text1" } })
+            <br />
+            <br />
+            @Html.Label("Author", "Author", new { @class = "name" })
+            <br />
+            @Html.Editor("Author", new { htmlAttributes = new { @class = "form-control type" } })
+            <br />
+            <br />
+            @Html.Label("Price", "Price", new { @class = "name" })
+            <br />
+            @Html.Editor("Price", new { htmlAttributes = new { @class = "form-control type" } })
+            <br />
+            <br />
+            @Html.Label("Publisher", "Publisher", new { @class = "name" })
+            <br />
+            @Html.Editor("Publisher", new { htmlAttributes = new { @class = "form-control type" } })
+            <br />
+            <br />
+
+            <br />
+            <label class="name">Select category</label>
+            @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categ, "Value", "Text"),
+                "Select category", new { @class = "form-control type" })
+            <br />
+            <button class="btn btn-success add" type="submit">Modify</button>
+        }
+    </div>
+</div>

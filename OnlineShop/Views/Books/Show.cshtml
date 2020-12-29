@@ -1,0 +1,154 @@
+﻿@Styles.Render("~/Content/Show.css")
+@model OnlineShop.Models.Book
+<h1>@ViewBag.Message</h1>
+<a href="/Books/Index" class="glyphicon glyphicon-chevron-left back">Back</a>
+
+<br />
+<br />
+<div class="panel panel-default">
+    <div class="panel-body box ">
+        <img class="card-img-top" src="/Content/UploadedImages/@Model.ImageName" alt="Card image cap" width="240" height="300">
+        <div class="Informations">
+            <h2>@Model.Title</h2>
+            <h4><strong>@Model.Author</strong></h4>
+            <br />
+            Publisher: <strong class="info">@Model.Publisher</strong>
+            <br />
+            <i class="glyphicon glyphicon-globe"></i> <strong class="info">@Model.Category.CategoryName</strong>
+            <br />
+            <br />
+            <strong class="info-font">@Model.Price Ron</strong>
+            <br /><br />
+            <button class="btn btn-primary add">Add to cart </button>
+
+
+        </div>
+
+    </div>
+    <strong style="font-size:larger; margin-left:10px"> DESCRIPTION:</strong>
+    <br /><br />
+    <div class="description">
+        @Model.Description
+    </div>
+
+    <br />
+    @if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.currentUser || ViewBag.isAdmin)
+    {<div class="buttons">
+            <a class="btn btn-success blue" href="/Books/Edit/@Model.BookId">Modify book</a>
+
+            <form method="post" action="/Books/Delete/@Model.BookId">
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                <button type="submit" class="btn btn-danger delete">Delete book</button>
+            </form>
+        </div>
+    }
+
+</div>
+
+<br />
+@if (ViewBag.showAddReview == true)
+{<h4 class="mrg-btm-none strong">Write a review!</h4>
+    <div class="container">
+        <div class="panel">
+
+            @using (Html.BeginForm(actionName: "New", controllerName: "Reviews"))
+            {
+                <div class="panel-body">
+
+                    @Html.HiddenFor(m => m.BookId)
+                    @Html.HiddenFor(m => m.UserId)
+
+                    <br /><br />
+                    @Html.Label("NrStars", "Rating", new { @class = "name" })
+                    <br />
+                    @Html.TextBox("NrStars", null, new { @type = "number", @class = "form-control type" })
+                    <br /><br />
+                    @Html.Label("Content", "Content", new { @class = "name" })
+                    <br />
+                    @Html.TextArea("Content", null, new { @class = "form-control type text" }) <br />
+
+                    <br />
+                    <button class="btn btn-success blue " type="submit">Add review</button>
+                </div>
+            }
+        </div>
+
+    </div>
+}
+@if (ViewBag.nrRev == true)
+{
+    <div class="reviews">
+        <h2 class="page-section-title clearfix">Reviews</h2>
+        @foreach (var rev in Model.Reviews)
+        {
+
+            <div class="container" style="width:80%; padding:20px;">
+
+
+                <p style="display: inline-block; float:left; margin-right:15px; margin-left:35px;">@rev.NrStars</p>
+
+                <div style="display: inline-block;  ">
+                    <i class=" glyphicon glyphicon-star" style="color: #e8eb31"></i>
+                </div>
+
+                <br /><br />
+                @if (ViewBag.showButtons == true && ViewBag.currentUser == rev.UserId)
+                {<div style="display: inline-block; float : left; margin-right: 15px">
+                        <a class="glyphicon glyphicon-pencil" href="/Reviews/Edit/@rev.ReviewId"></a>
+                    </div>
+                }
+                <div>
+                    <p>@rev.Content</p>
+                    <small class="pull-right " style="color: #0971a4;">@rev.Date</small>
+                    <i class="glyphicon glyphicon-user"></i> <i>by</i> <strong> @rev.User.UserName </strong>
+
+                </div>
+                <br /> <br />
+                @if (ViewBag.showButtons == true && ViewBag.currentUser == rev.UserId)
+                {
+                    <div style="display: inline-block; float: left;" class="pull-right">
+                        <form method="post" action="/Reviews/Delete/@rev.ReviewId">
+                            @Html.HttpMethodOverride(HttpVerbs.Delete)
+                            <button class="glyphicon glyphicon-trash" style="border: none; background: transparent" type="submit"></button>
+                        </form>
+                    </div>
+                }
+
+            </div>
+            <hr />
+        }
+
+    </div>
+
+    <br />
+    <br />
+}
+@if (ViewBag.showAddReview == true && ViewBag.nrRev == true)
+{<h4 class="mrg-btm-none strong">Write a review!</h4>
+    <div class="container">
+      
+
+            @using (Html.BeginForm(actionName: "New", controllerName: "Reviews"))
+            {
+               
+
+                    @Html.HiddenFor(m => m.BookId)
+                    @Html.HiddenFor(m => m.UserId)
+
+                    <br />
+                    @Html.Label("NrStars", "Rating", new { @class = "name" })
+                    <br />
+                    @Html.TextBox("NrStars", null, new { @type = "number", @class = "form-control type" })
+                    <br />
+                    @Html.Label("Content", "Content", new { @class = "name" })
+                    <br />
+                    @Html.TextArea("Content", null, new { @class = "form-control type text" }) <br />
+
+                    <br />
+                    <button class="btn btn-success blue " type="submit">Add review</button>
+               
+            }
+       
+
+    </div>
+}
