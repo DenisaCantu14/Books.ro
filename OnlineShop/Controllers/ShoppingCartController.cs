@@ -25,7 +25,10 @@ namespace OnlineShop.Controllers
                 CartTotal = cart.GetTotal()
                 
             };
-          
+            if (viewModel.CartTotal == 0) 
+                ViewBag.EmptyCart = true;
+            else
+                ViewBag.EmptyCart = false;
             // Return the view
             return View(viewModel);
         }

@@ -34,7 +34,6 @@ namespace OnlineShop.Models
         public int CategoryId { get; set; }
         public string UserId { get; set; }
         public bool Accepted { get; set; }
-        public string BuyerId { get; set; }
         public virtual Category Category { get; set; }
         public virtual ApplicationUser User { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }

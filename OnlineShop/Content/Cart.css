@@ -103,7 +103,7 @@
     padding: 5px;
     width: 250px;
 }
-.continue {
+.button {
     background-color: #00345b !important;
     border-color: #00345b!important;
     width: 130px;
@@ -134,4 +134,24 @@
     border-radius: 2%;
     padding: 20px;
     margin-top: 20px;
+}
+
+.title{
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+    color: #00345b;
+    font-size: 60px;
+}
+
+.empty {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+.back
+{
+    margin-left:140px;
 }
