@@ -1,26 +1,47 @@
 ﻿@Styles.Render("~/Content/Index.css")
 <h1 class="Title">@ViewBag.Message</h1>
+<br />
+<br />
+
+    <form method="GET" action="/Books/Index/">
+        <div class="form-group">
+            <label style="display:inline" for="sel">Sort by:</label>
+            <select style="display:inline" class="form-control" id="sel" name="sort">
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+                <option>Rating: Low to High</option>
+                <option>Rating: High to Low</option>
+            </select>
+            <button style="display:inline" class="btn btn-succes" type="submit"> Sort</button>
+
+        </div>
+
+    </form>
+
+
+
+
 <div class="wrapper">
     @foreach (var book in ViewBag.Books)
     {
-      
+
         <div class="panel panel-default ">
-                <div class="bookInfo">
-                    <div class="panel-body ">
-                        <a href="/Books/Show/@book.BookId"> <img class="card-img-top imgBook" src="/Content/UploadedImages/@book.ImageName" alt="Card image cap" width="240" height="300"></a>
-                        <h3 class="book-title">@book.Title</h3>
-                        <p> by <strong>@book.Author</strong></p>
-                        <strong class="price">@book.Price RON</strong>
-                    </div>
-                    <div class="panel-footer">
-                        <a class=" btn btn-sm btn btn-success show" href="/Books/Show/@book.BookId/">Show book</a>
-                    </div>
-
-                    <br />
+            <div class="bookInfo">
+                <div class="panel-body ">
+                    <a href="/Books/Show/@book.BookId"> <img class="card-img-top imgBook" src="/Content/UploadedImages/@book.ImageName" alt="Card image cap" width="240" height="300"></a>
+                    <h3 class="book-title">@book.Title</h3>
+                    <p> by <strong>@book.Author</strong></p>
+                    <strong class="price">@book.Price RON</strong>
                 </div>
-            </div>
+                <div class="panel-footer">
+                    <a class=" btn btn-sm btn btn-success show" href="/Books/Show/@book.BookId/">Show book</a>
+                </div>
 
-        
+                <br />
+            </div>
+        </div>
+
+
     }
 </div>
 <br />

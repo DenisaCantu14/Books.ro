@@ -21,7 +21,22 @@ namespace OnlineShop.Controllers
         private int _perPage = 8;
         public ActionResult Index()
         {
-            var books = db.Books.Where(a => a.Accepted == true).Include("Category").Include("User").OrderBy(a => a.Title);
+            var books = db.Books.Where(a => a.Accepted == true).Include("Category").Include("User").OrderBy(a => a.Price);
+            switch (Request.Params.Get("sort"))
+            {
+                case "Price: Low to High":
+                    books = db.Books.Where(a => a.Accepted == true).Include("Category").Include("User").OrderBy(a => a.Price);
+                    break;
+                case "Price: High to Low":
+                    books = db.Books.Where(a => a.Accepted == true).Include("Category").Include("User").OrderByDescending(a => a.Price);
+                    break;
+                case "Rating: Low to High":
+                    Console.WriteLine("Case 2");
+                    break;
+                case "Rating: High to Low":
+                    Console.WriteLine("Default case");
+                    break;
+            }
             var search = "";
             if(Request.Params.Get("search") != null)
             {
@@ -39,7 +54,7 @@ namespace OnlineShop.Controllers
 
                 List<int> mergeIds = bookIds.Union(reviewIds).ToList();
 
-                books = db.Books.Where(book => mergeIds.Contains(book.BookId)).Include("Category").Include("User").OrderBy(a => a.Title);
+                books = db.Books.Where(book => mergeIds.Contains(book.BookId)).Include("Category").Include("User").OrderBy(a => a.Price);
                 
             }
             var totalItems = books.Count();
