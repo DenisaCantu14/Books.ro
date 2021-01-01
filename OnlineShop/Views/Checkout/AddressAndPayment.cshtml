@@ -1,0 +1,82 @@
+﻿@Styles.Render("~/Content/Form.css")
+@model OnlineShop.Models.Order
+<br />
+<br />
+<a href="/ShoppingCart/Index" class="glyphicon glyphicon-chevron-left back">Back</a>
+<div class="small-box">
+
+    <h3 class="Title">Address And Payment</h3>
+    <div class="second-box">
+        @using (Html.BeginForm(actionName: "AddressAndPayment", controllerName: "Checkout"))
+        {
+            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+            @Html.Label("FirstName", "FirstName", new { @class = "name" })
+            <br />
+            @Html.TextBox("FirstName", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+
+            <br />
+            @Html.Label("LastName", "LastName", new { @class = "name" })
+            <br />
+            @Html.TextBox("LastName", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("Address", "Address", new { @class = "name" })
+            <br />
+            @Html.TextBox("Address", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.Address, "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("City", "City", new { @class = "name" })
+            <br />
+            @Html.TextBox("City", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.City, "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("State", "State", new { @class = "name" })
+            <br />
+            @Html.TextBox("State", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.State, "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("PostalCode", "PostalCode", new { @class = "name" })
+            <br />
+            @Html.TextBox("PostalCode", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.PostalCode, "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("Country", "Country", new { @class = "name" })
+            <br />
+            @Html.TextBox("Country", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.Country, "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("Phone", "Phone", new { @class = "name" })
+            <br />
+            @Html.TextBox("Phone", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
+            <br />
+
+            @Html.Label("Email", "Email", new { @class = "name" })
+            <br />
+            @Html.TextBox("Email", null, new { @class = "form-control type" })
+            <br />
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            <br />
+
+
+
+            <input class ="btn btn-primary add"type="submit" value="Submit Order" />
+        }
+    </div>
+    </div>

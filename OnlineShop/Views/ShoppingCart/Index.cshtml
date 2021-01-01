@@ -1,0 +1,58 @@
+﻿@model OnlineShop.ViewModels.ShoppingCartViewModel
+@Styles.Render("~/Content/Cart.css")
+
+
+<h3 class="Title"> My cart </h3>
+
+<div class="box">
+    @foreach (var item in Model.CartItems)
+    {
+        <div class="small-box">
+            <form method="post" action="/ShoppingCart/RemoveFromCart/@item.RecordId">
+
+                <button type="submit" class="remove"><span class="glyphicon glyphicon-minus minus"></span></button>
+
+            </form>
+            <div class="product">
+                <img class="book" src="/Content/UploadedImages/@item.Book.ImageName" alt="Card image cap">
+                <a class="book-title text" href="/Books/Show/@item.BookId/">@item.Book.Title</a>
+
+                <p class="book-quantity text">@item.Count buc </p>
+
+                <p class="book-price text"> @item.Book.Price Ron</p>
+
+            </div>
+
+        </div>
+
+
+
+
+    }
+</div>
+
+<div class="summary">
+    <div class="info-order">
+        <h3>Order summary</h3>
+        <br />
+        <div class="cost">
+            <p>Products price:</p>
+            <p> @Model.CartTotal Ron </p>
+        </div>
+        <div class="cost">
+            <p>Tranport's cost :</p>
+            <p style="color: #009933 ;font-weight:bold">FREE </p>
+        </div>
+    </div>
+    <div class="line-separator"></div>
+
+    <div class="total">
+        <p style="color: black ;font-weight:bold" >Total:</p>
+        <p style="color: black ;font-weight:bold"> @Model.CartTotal Ron </p>
+       <a class="btn btn-success continue" href="/Checkout/AddressAndPayment/">>> Continue</a>
+     
+    </div>
+
+</div>
+
+

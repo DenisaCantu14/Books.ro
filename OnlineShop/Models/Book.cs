@@ -28,16 +28,18 @@ namespace OnlineShop.Models
 
         [Required(ErrorMessage = "Price is required")]
         [Range(1,100000)]
-        public float Price { get; set; }
+        public decimal Price { get; set; }
         
         [Required(ErrorMessage = "Category is required")]
         public int CategoryId { get; set; }
         public string UserId { get; set; }
         public bool Accepted { get; set; }
+        public string BuyerId { get; set; }
         public virtual Category Category { get; set; }
         public virtual ApplicationUser User { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
         public IEnumerable<SelectListItem> Categ { get; set; }
+       
 
     }
 }

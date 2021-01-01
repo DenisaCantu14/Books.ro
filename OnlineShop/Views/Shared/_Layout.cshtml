@@ -50,10 +50,13 @@
 
                     </li>
                     @if (User.IsInRole("Editor") || User.IsInRole("Admin") || User.IsInRole("User"))
-                    { <li>
-                            <a class="glyphicon glyphicon-shopping-cart" aria-hidden="true" href="#"> </a>
+                    {
+                        <li>
+                            <a style =" padding-top: 10px "class="glyphicon glyphicon-shopping-cart" aria-hidden="true" href="/ShoppingCart/Index/"></a>
                         </li>
-                        }
+                    }
+
+                   
 
 
 

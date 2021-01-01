@@ -66,6 +66,7 @@ namespace OnlineShop.Controllers
 
             return View();
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult Accept()
         {
             var books = db.Books.Where(a => a.Accepted==false).Include("Category").Include("User");

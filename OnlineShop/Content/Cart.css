@@ -1,0 +1,137 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Langar&family=Lato:ital@1&display=swap');
+
+
+.Title {
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+    color: #00345b;
+    font-size: 50px;
+    text-align: center;
+    padding: 10px;
+}
+
+.book{
+    width:100px;
+    height:140px;
+}
+.text {
+    font-family: "Open Sans", Helvetica, sans-serif !important;
+    color: black;
+    font-weight: bold;
+    margin-top:45px;
+}
+.book-title {
+   
+    font-size: 18px;
+
+}
+.book-price {
+    font-size: 20px;
+}
+.book-quantity {
+    font-size: 17px;
+}
+.book-title:hover {
+    color: black;
+}
+
+.product {
+    display: flex;
+    background-color: white;
+    border-radius: 2%;
+    margin: 12px;
+    padding: 15px;
+    justify-content: space-around;
+}
+
+.small-box {
+    background-color: white;
+    margin: 12px;
+    box-shadow: 4px 4px 4px grey;
+}
+.box {
+    background-color: #cedceb;
+    border-radius: 1%;
+    padding: 10px;
+   
+}
+
+.remove {
+    border-radius: 50%;
+    padding-top: 3px;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: #a1a1a1;
+    border: none;
+    margin-top: 10px;
+    margin-right: 10px;
+    position: absolute;
+    right: 220px;
+}
+.minus
+{
+    color:white;
+   
+}
+.summary {
+    box-shadow: 15px 15px 25px grey;
+    display:flex;
+    flex-direction:row;
+    justify-content:space-around;
+    margin-top:40px;
+    border-radius:4px;
+}
+.info-order
+{
+    width:250px;
+}
+.cost
+{
+   display:flex;
+   justify-content:space-between;
+   font-size:16px;
+
+}
+.line-separator {
+    border-left: 2px solid #808080;
+    margin-top:7px;
+    margin-bottom:7px;
+
+}
+.total {
+    font-size: 24px;
+    padding: 5px;
+    width: 250px;
+}
+.continue {
+    background-color: #00345b !important;
+    border-color: #00345b!important;
+    width: 130px;
+    font-size:20px;
+    width:auto;
+}
+
+ .continue:hover {
+        background-color: #052033 !important;
+    }
+
+.txt {
+    font-family: 'Langar', cursive;
+    font-family: 'Lato', sans-serif;
+    color: #00345b;
+    font-size: 25px;
+    text-align: center;
+    padding: 10px;
+}
+
+
+.sm-box {
+    width: 73%;
+    border: 9px solid #00345b;
+    margin: auto;
+    box-shadow: 20px 20px 50px grey;
+    background-color: #cedceb;
+    border-radius: 2%;
+    padding: 20px;
+    margin-top: 20px;
+}

@@ -20,6 +20,7 @@ namespace OnlineShop.Models
         }
         public IEnumerable<SelectListItem> AllRoles { get; set; }
        
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -33,7 +34,10 @@ namespace OnlineShop.Models
         public DbSet<Book> Books { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Review> Reviews { get; set; }
-       
+        public DbSet<Cart> Carts  { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

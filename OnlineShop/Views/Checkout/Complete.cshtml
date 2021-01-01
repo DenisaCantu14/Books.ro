@@ -1,0 +1,11 @@
+﻿@model int
+@Styles.Render("~/Content/Cart.css")
+
+<h2 class="Title">Checkout Complete</h2>
+<div class="sm-box">
+    <p class="txt">Thanks for your order! Your order number is: @Model</p>
+    <p class="txt">
+        How about shopping for some more books in our
+        @Html.ActionLink("store", "Index", "Home")
+    </p>
+</div>
