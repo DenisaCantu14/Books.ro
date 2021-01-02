@@ -25,10 +25,15 @@ namespace OnlineShop.Controllers
         {
             review.Date = DateTime.Now;
             review.UserId = User.Identity.GetUserId();
+            Book book = db.Books.Find(review.BookId);
             try
             {
                 if (ModelState.IsValid)
                 {
+                    book.nrStars = book.nrStars + review.NrStars;
+                    book.nrRev++;
+                    book.avg = book.nrStars / book.nrRev;
+                    book.avg = Math.Round(book.avg, 2);
                     db.Reviews.Add(review);
                     db.SaveChanges();
                     return Redirect("/Books/Show/" + review.BookId);
@@ -103,6 +108,11 @@ namespace OnlineShop.Controllers
         public ActionResult Delete(int id)
         {
             Review review = db.Reviews.Find(id);
+            var isAdmin = false;
+            if(User.IsInRole("Admin"))
+            {
+                isAdmin = true;
+            }
             if (review.UserId == User.Identity.GetUserId() || User.IsInRole("Admin"))
             {
                 db.Reviews.Remove(review);

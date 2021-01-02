@@ -163,6 +163,8 @@ namespace OnlineShop.Controllers
         {
             book.Categ = GetAllCategories();
             book.UserId = User.Identity.GetUserId();
+            book.nrStars = 0;
+            book.nrRev = 0;
             if (User.IsInRole("Admin"))
                 book.Accepted = true;
             else

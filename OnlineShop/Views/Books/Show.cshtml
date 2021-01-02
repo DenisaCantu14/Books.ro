@@ -20,12 +20,14 @@
             <strong class="info-font">@Model.Price Ron</strong>
             <br /><br />
             <a href="/ShoppingCart/AddToCart/@Model.BookId" class="btn btn-primary add">Add to cart</a>
-          
+
 
 
         </div>
 
     </div>
+    <img class="stars" style="margin-left: 10px" src="/Content/UploadedImages/stars.png" alt="Number of stars: " width="100" height="50"><class = "avg" style="font-size:21px">  @Model.avg</class>
+    <br />
     <strong style="font-size:larger; margin-left:10px"> DESCRIPTION:</strong>
     <br /><br />
     <div class="description">
@@ -54,23 +56,31 @@
 
             @using (Html.BeginForm(actionName: "New", controllerName: "Reviews"))
             {
-                <div class="panel-body">
+            <div class="panel-body">
 
-                    @Html.HiddenFor(m => m.BookId)
-                    @Html.HiddenFor(m => m.UserId)
+                @Html.HiddenFor(m => m.BookId)
+                @Html.HiddenFor(m => m.UserId)
 
-                    <br /><br />
-                    @Html.Label("NrStars", "Rating", new { @class = "name" })
-                    <br />
-                    @Html.TextBox("NrStars", null, new { @type = "number", @class = "form-control type" })
-                    <br /><br />
-                    @Html.Label("Content", "Content", new { @class = "name" })
-                    <br />
-                    @Html.TextArea("Content", null, new { @class = "form-control type text" }) <br />
+                <br /><br />
+                @Html.DropDownList("NrStars", new List<SelectListItem>
+        {
+           new SelectListItem { Text = "1", Value = "1", Selected=true},
+           new SelectListItem { Text = "2", Value = "2"},
+           new SelectListItem { Text = "3", Value = "3"},
+           new SelectListItem { Text = "4", Value = "4"},
+           new SelectListItem { Text = "5", Value = "5"}
+        }, "Stars")
 
-                    <br />
-                    <button class="btn btn-success blue " type="submit">Add review</button>
-                </div>
+               
+
+                <br /><br />
+                @Html.Label("Content", "Content", new { @class = "name" })
+                <br />
+                @Html.TextArea("Content", null, new { @class = "form-control type text" }) <br />
+
+                <br />
+                <button class="btn btn-success blue " type="submit">Add review</button>
+            </div>
             }
         </div>
 
@@ -83,39 +93,44 @@
         @foreach (var rev in Model.Reviews)
         {
 
-            <div class="container" style="width:80%; padding:20px;">
+        <div class="container" style="width:80%; padding:20px;">
 
 
-                <p style="display: inline-block; float:left; margin-right:15px; margin-left:35px;">@rev.NrStars</p>
+          
+            @for (var i = 1; i <= @rev.NrStars; i++)
+        {
+            <i class=" glyphicon glyphicon-star" style="color: #e8eb31"></i>
 
-                <div style="display: inline-block;  ">
-                    <i class=" glyphicon glyphicon-star" style="color: #e8eb31"></i>
+        }
+
+            
+
+
+
+            <br /><br />
+            @if (ViewBag.showButtons == true && ViewBag.currentUser == rev.UserId || ViewBag.isAdmin == true)
+            {<div style="display: inline-block; float : left; margin-right: 15px">
+                    <a class="glyphicon glyphicon-pencil" href="/Reviews/Edit/@rev.ReviewId"></a>
                 </div>
-
-                <br /><br />
-                @if (ViewBag.showButtons == true && ViewBag.currentUser == rev.UserId)
-                {<div style="display: inline-block; float : left; margin-right: 15px">
-                        <a class="glyphicon glyphicon-pencil" href="/Reviews/Edit/@rev.ReviewId"></a>
-                    </div>
-                }
-                <div>
-                    <p>@rev.Content</p>
-                    <small class="pull-right " style="color: #0971a4;">@rev.Date</small>
-                    <i class="glyphicon glyphicon-user"></i> <i>by</i> <strong> @rev.User.UserName </strong>
-
-                </div>
-                <br /> <br />
-                @if (ViewBag.showButtons == true && ViewBag.currentUser == rev.UserId)
-                {
-                    <div style="display: inline-block; float: left;" class="pull-right">
-                        <form method="post" action="/Reviews/Delete/@rev.ReviewId">
-                            @Html.HttpMethodOverride(HttpVerbs.Delete)
-                            <button class="glyphicon glyphicon-trash" style="border: none; background: transparent" type="submit"></button>
-                        </form>
-                    </div>
-                }
+            }
+            <div>
+                <p>@rev.Content</p>
+                <small class="pull-right " style="color: #0971a4;">@rev.Date</small>
+                <i class="glyphicon glyphicon-user"></i> <i>by</i> <strong> @rev.User.UserName </strong>
 
             </div>
+            <br /> <br />
+            @if (ViewBag.showButtons == true && ViewBag.currentUser == rev.UserId || ViewBag.isAdmin==true)
+            {
+                <div style="display: inline-block; float: left;" class="pull-right">
+                    <form method="post" action="/Reviews/Delete/@rev.ReviewId">
+                        @Html.HttpMethodOverride(HttpVerbs.Delete)
+                        <button class="glyphicon glyphicon-trash" style="border: none; background: transparent" type="submit"></button>
+                    </form>
+                </div>
+            }
+
+        </div>
             <hr />
         }
 
@@ -126,30 +141,34 @@
 }
 @if (ViewBag.showAddReview == true && ViewBag.nrRev == true)
 {<h4 class="mrg-btm-none strong">Write a review!</h4>
-    <div class="container">
-      
+ <div class="container">
 
-            @using (Html.BeginForm(actionName: "New", controllerName: "Reviews"))
-            {
-               
 
-                    @Html.HiddenFor(m => m.BookId)
-                    @Html.HiddenFor(m => m.UserId)
+     @using (Html.BeginForm(actionName: "New", controllerName: "Reviews"))
+     {
 
-                    <br />
-                    @Html.Label("NrStars", "Rating", new { @class = "name" })
-                    <br />
-                    @Html.TextBox("NrStars", null, new { @type = "number", @class = "form-control type" })
-                    <br />
-                    @Html.Label("Content", "Content", new { @class = "name" })
-                    <br />
-                    @Html.TextArea("Content", null, new { @class = "form-control type text" }) <br />
 
-                    <br />
-                    <button class="btn btn-success blue " type="submit">Add review</button>
-               
-            }
-       
+         @Html.HiddenFor(m => m.BookId)
+         @Html.HiddenFor(m => m.UserId)
 
-    </div>
+         @Html.DropDownList("NrStars", new List<SelectListItem>
+                {
+                new SelectListItem { Text = "1", Value = "1", Selected=true},
+                new SelectListItem { Text = "2", Value = "2"},
+                new SelectListItem { Text = "3", Value = "3"},
+                new SelectListItem { Text = "4", Value = "4"},
+                new SelectListItem { Text = "5", Value = "5"}
+                }, "Stars")
+         <br /><br />
+         @Html.Label("Content", "Content", new { @class = "name" })
+         <br />
+         @Html.TextArea("Content", null, new { @class = "form-control type text" }) <br />
+
+         <br />
+         <button class="btn btn-success blue " type="submit">Add review</button>
+
+     }
+
+
+ </div>
 }

@@ -25,11 +25,12 @@ namespace OnlineShop.Models
         public string Description { get; set; }
         [Required(ErrorMessage = "Publisher is required")]
         public string Publisher { get; set; }
-
         [Required(ErrorMessage = "Price is required")]
         [Range(1,100000)]
         public decimal Price { get; set; }
-        
+        public float nrStars { get; set; }
+        public int nrRev { get; set; }
+        public double avg { get; set; }
         [Required(ErrorMessage = "Category is required")]
         public int CategoryId { get; set; }
         public string UserId { get; set; }
