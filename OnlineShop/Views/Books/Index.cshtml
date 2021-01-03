@@ -31,7 +31,9 @@
                     <a href="/Books/Show/@book.BookId"> <img class="card-img-top imgBook" src="/Content/UploadedImages/@book.ImageName" alt="Card image cap" width="240" height="300"></a>
                     <h3 class="book-title">@book.Title</h3>
                     <p> by <strong>@book.Author</strong></p>
-                    <strong class="price">@book.Price RON</strong>
+                    <strong class="price">@book.Price RON</strong> <br />
+                    <img class="stars" style="margin-left: 10px" src="/Content/UploadedImages/stars.png" alt="Number of stars: " width="80" height="40"><class ="avg" style="font-size:13px">  @book.avg</class>
+                    <br />
                 </div>
                 <div class="panel-footer">
                     <a class=" btn btn-sm btn btn-success show" href="/Books/Show/@book.BookId/">Show book</a>

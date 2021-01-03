@@ -31,10 +31,10 @@ namespace OnlineShop.Controllers
                     books = db.Books.Where(a => a.Accepted == true).Include("Category").Include("User").OrderByDescending(a => a.Price);
                     break;
                 case "Rating: Low to High":
-                    Console.WriteLine("Case 2");
+                    books = db.Books.Where(a => a.Accepted == true).Include("Category").Include("User").OrderBy(a => a.avg);
                     break;
                 case "Rating: High to Low":
-                    Console.WriteLine("Default case");
+                    books = db.Books.Where(a => a.Accepted == true).Include("Category").Include("User").OrderByDescending(a => a.avg);
                     break;
             }
             var search = "";
