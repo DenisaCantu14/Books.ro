@@ -22,58 +22,51 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Books.ro", "Index", "Home", new { area = "" }, new { @class = "navbar-brand font-logo" })
+                @Html.ActionLink("Books.ro", "Index", "Home", new { area = "" }, new { @class = "navbar-brand font-logo hov" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Books", "Index", "Books")</li>
-                    @* @if (User.IsInRole("Admin"))
-        {
-            <li>@Html.ActionLink("Categories", "Index", "Categories")</li>
-            <li>@Html.ActionLink("Add category", "New", "Categories")</li>
-            <li>@Html.ActionLink("Accept", "Accept", "Books")</li>
-            <li>@Html.ActionLink("Users", "Index", "Users")</li>
-        }
-                    *@
+                    <li>@Html.ActionLink("Books", "Index", "Books", new { area = "" }, new { @class = "hov" })</li>
+        
                     @if (User.IsInRole("Admin"))
                     {
-                        <li dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <li dropdown" class="drop">
+                            <a class="dropdown-toggle hov" data-toggle="dropdown" href="#">
                                 Admin
                                 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li style="  background-color:#00345B">@Html.ActionLink("Categories", "Index", "Categories")</li>
-                                <option style="border-bottom:2px solid rgba(153,153,153,.3); margin:-10px 0 4px 0" disabled="disabled"></option>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-link" >@Html.ActionLink("Categories", "Index", "Categories")</li>
+                               
+                                <li class="dropdown-link" >@Html.ActionLink("Add category", "New", "Categories")</li>
+                               
+                                <li class="dropdown-link">@Html.ActionLink("Accept", "Accept", "Books")</li>
 
-                                <li style="  background-color:#00345B">@Html.ActionLink("Add category", "New", "Categories")</li>
-                                <option style="border-bottom:2px solid rgba(153,153,153,.3); margin:-10px 0 4px 0" disabled="disabled"></option>
+                                <li class="dropdown-link">@Html.ActionLink("Users", "Index", "Users")</li>
 
-                                <li style="  background-color:#00345B">@Html.ActionLink("Accept", "Accept", "Books")</li>
-                                <option style="border-bottom:2px solid rgba(153,153,153,.3); margin:-10px 0 4px 0" disabled="disabled"></option>
+                                <li class="dropdown-link">@Html.ActionLink("Add book", "SaveImages", "Books")</li>
 
-                                <li style="  background-color:#00345B">@Html.ActionLink("Users", "Index", "Users")</li>
-                                <option style="border-bottom:2px solid rgba(153,153,153,.3); margin:-10px 0 4px 0" disabled="disabled"></option>
-
-                                <li style="  background-color:#00345B">@Html.ActionLink("Add book", "SaveImages", "Books")</li>
-                    
 
                             </ul>
                         </li>
+
+                       
                     }
                     @if (User.IsInRole("Editor"))
                     {
 
-                        <li dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                Editor
-                                <span class="caret"></span>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li style="  background-color:#00345B">@Html.ActionLink("Add book", "SaveImages", "Books")</li>
+                <li dropdown" class="drop">
+                    <a class="dropdown-toggle hov" data-toggle="dropdown" href="#">
+                        Editor
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                     
+                        <li class="dropdown-link">@Html.ActionLink("Add book", "SaveImages", "Books")</li>
 
-                            </ul>
-                        </li>
+
+                    </ul>
+                </li>
                     }
                     <li>
                         <div>

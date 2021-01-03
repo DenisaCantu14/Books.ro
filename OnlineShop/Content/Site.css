@@ -38,9 +38,9 @@ textarea {
         color: white !important;
     }
 
-    .navbar a:hover {
-        color: #cad7ed !important;
-    }
+.hov:hover {
+    color: #cad7ed !important;
+}
 
 
 .font-logo {
@@ -136,4 +136,21 @@ opacity: 0.5;
     background: transparent;
     color: white;
     
+}
+
+.dropdown-link > a {
+    color: #00345B !important;
+    font-weight:600 !important;
+}
+.dropdown-link :hover {
+    background-color: #cedceb !important;
+}
+.dropdown-toggle:focus {
+    background-color: #00345B !important;
+}
+.dropdown-menu {
+    border-radius: 3px 3px 3px 3px !important;
+}
+.drop:hover > .dropdown-menu {
+    display: block !important;
 }
