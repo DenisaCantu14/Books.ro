@@ -129,7 +129,7 @@ namespace OnlineShop.Controllers
             {
                 ViewBag.showAddReview = true;
             }
-            if (User.IsInRole("Editor") || User.IsInRole("Admin"))
+            if (User.IsInRole("Editor") || User.IsInRole("Admin") || User.IsInRole("User"))
             {
                 ViewBag.showButtons = true;
             }
