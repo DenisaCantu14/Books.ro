@@ -75,12 +75,16 @@ namespace OnlineShop.Controllers
                 if (ModelState.IsValid)
                 {
                     Review review = db.Reviews.Find(id);
+                    Book book = db.Books.Find(review.BookId);
+                    book.nrStars = book.nrStars - review.NrStars;
                     if (review.UserId == User.Identity.GetUserId() || User.IsInRole("Admin"))
                     {
                         if (TryUpdateModel(review))
                         {
+
                             review.Content = requestReview.Content;
                             review.NrStars = requestReview.NrStars;
+                            book.nrStars = book.nrStars + review.NrStars;
                             db.SaveChanges();
                         }
                         return Redirect("/Books/Show/" + review.BookId);
@@ -107,7 +111,9 @@ namespace OnlineShop.Controllers
         [Authorize(Roles = "Admin, Editor, User")]
         public ActionResult Delete(int id)
         {
+            
             Review review = db.Reviews.Find(id);
+            Book book = db.Books.Find(review.BookId);
             var isAdmin = false;
             if(User.IsInRole("Admin"))
             {
@@ -115,6 +121,9 @@ namespace OnlineShop.Controllers
             }
             if (review.UserId == User.Identity.GetUserId() || User.IsInRole("Admin"))
             {
+                book.nrStars = book.nrStars - review.NrStars;
+                book.nrRev = book.nrRev - 1;
+                book.avg = book.nrStars / book.nrRev;
                 db.Reviews.Remove(review);
                 db.SaveChanges();
                 TempData["message"] = "Review deleted!";
